@@ -12,13 +12,13 @@
 @interface CGPointObject : NSObject{
     CGPoint _ratio;
     CGPoint _offset;
-    CCNode *__unsafe_unretained _child; //weak ref
+    CCNode *__unsafe_unretained _child; // weak ref
 }
-@property (nonatomic, readwrite) CGPoint ratio;
-@property (nonatomic, readwrite) CGPoint offset;
-@property (nonatomic, readwrite, unsafe_unretained) CCNode *child;
+@property (nonatomic,readwrite) CGPoint ratio;
+@property (nonatomic,readwrite) CGPoint offset;
+@property (nonatomic,readwrite,unsafe_unretained) CCNode *child;
 +(id) pointWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
--(id) initWithCGPoint:(CGPoint)point offset:(CGPoint)point offset:(CGPoint)offset;
+-(id) initWithCGPoint:(CGPoint)point offset:(CGPoint)offset;
 @end
 
 
@@ -71,13 +71,13 @@
 
     for (CCNode *bush in _bushes) {
         CGPoint offset = bush.position;
-        [_parallaxContainer removeChild:bush];
+        [self removeChild:bush];  //using self does not work so what do we use instead?
         [_parallaxBackground addChild:bush z:0 parallaxRatio:_bushParallaxRatio positionOffset:offset];
     }
     
     for (CCNode *cloud in _clouds) {
         CGPoint offset = cloud.position;
-        [_parallaxContainer removeChild:cloud];
+        [self removeChild:cloud];
         [_parallaxBackground addChild:cloud z:0 parallaxRatio:_cloudParallaxRatio positionOffset:offset];
     }
     
