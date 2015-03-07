@@ -71,7 +71,7 @@
 
     for (CCNode *bush in _bushes) {
         CGPoint offset = bush.position;
-        [self removeChild:bush];  //using self does not work so what do we use instead?
+        [self removeChild:bush];  //for no error need to clouds, bushes and parallaxContainer had to be in CCNode
         [_parallaxBackground addChild:bush z:0 parallaxRatio:_bushParallaxRatio positionOffset:offset];
     }
     
